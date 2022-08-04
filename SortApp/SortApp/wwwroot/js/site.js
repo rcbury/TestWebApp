@@ -1,4 +1,25 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const txtin = document.querySelector("#in");
+const input = document.querySelector("#txt-inp");
 
-// Write your Javascript code.
+input.addEventListener("change", () =>
+{
+    showText(input.files[0]);
+})
+
+const showText = (file) =>
+{
+    const reader = new FileReader();
+    reader.readAsText(file, "windows-1251");
+    var strarr = [];
+    reader.onload = e =>
+    {
+        strarr = reader.result.split(",");
+        var str = `<ul class="list-unstyled">`;
+        for (var i = 0; i < strarr.length; i++)
+        {
+            str += `<li>${strarr[i]}</li>`;
+        }
+        str += "</ul>";
+        txtin.innerHTML = str;
+    }
+}
