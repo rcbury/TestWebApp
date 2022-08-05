@@ -19,7 +19,13 @@ namespace SortApp.Pages
 
         public void OnGet()
         {
-
+            var temp = Request.Query["collection"].ToString().Split(',');
+            var tstr = "";
+            foreach (var item in temp) 
+            {
+                tstr += $"<li>{item}</li>";
+            }
+            ViewData["Collection"] = tstr;
         }
     }
 }

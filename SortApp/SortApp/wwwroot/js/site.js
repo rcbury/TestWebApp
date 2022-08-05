@@ -21,5 +21,6 @@ const showText = (file) =>
         }
         str += "</ul>";
         txtin.innerHTML = str;
+        document.querySelector("#coll").nodeValue = reader.result;
     }
 }
