@@ -21,11 +21,22 @@ namespace SortApp.Pages
         {
             var temp = Request.Query["collection"].ToString().Split(',');
             var tstr = "";
-            foreach (var item in temp) 
+            foreach (var item in temp)
             {
                 tstr += $"<li>{item}</li>";
             }
-            ViewData["Collection"] = tstr;
+            ViewData["collection"] = tstr;
+            if (!String.IsNullOrEmpty(Request.Query["collection"].ToString())) 
+            {
+                MyList newList = new MyList(Request.Query["collection"].ToString());
+                newList.Sort(Request.Query["sort"].ToString());
+                tstr = "";
+                foreach (var item in newList.Sorted)
+                {
+                    tstr += $"<li>{item}</li>";
+                }
+                ViewData["sorted"] = tstr;
+            }
         }
     }
 }

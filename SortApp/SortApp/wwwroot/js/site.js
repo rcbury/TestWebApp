@@ -9,7 +9,7 @@ input.addEventListener("change", () =>
 const showText = (file) =>
 {
     const reader = new FileReader();
-    reader.readAsText(file, "windows-1251");
+    reader.readAsText(file, "utf-8");
     var strarr = [];
     reader.onload = e =>
     {
@@ -21,6 +21,6 @@ const showText = (file) =>
         }
         str += "</ul>";
         txtin.innerHTML = str;
-        document.querySelector("#coll").nodeValue = reader.result;
+        document.getElementById("coll").value = reader.result;
     }
 }
